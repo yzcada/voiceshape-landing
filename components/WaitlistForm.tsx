@@ -46,7 +46,7 @@ export default function WaitlistForm({ className = '' }: { className?: string })
         <button
           type="submit"
           disabled={status === 'loading' || !gdpr}
-          className="rounded-full px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+          className="rounded-full px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer whitespace-nowrap"
           style={{ background: 'linear-gradient(90deg, #EFA8BC 0%, #C5A8D8 50%, #8EC4E4 100%)' }}
         >
           {status === 'loading' ? 'Joining...' : 'Join Waitlist'}

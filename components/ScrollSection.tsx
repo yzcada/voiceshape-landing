@@ -223,7 +223,18 @@ function MobileLayout() {
             'radial-gradient(ellipse 80% 80% at 100% 0%, rgba(142,196,228,0.10) 0%, rgba(197,168,216,0.08) 40%, transparent 70%), white',
         }}
       >
-        <Image src="/Logo_trans.png" alt="VoiceShape" width={72} height={72} className="mb-6" />
+        <div className="flex items-center gap-1.5 mb-6">
+          <Image src="/Logo_trans.png" alt="VoiceShape" width={64} height={64} />
+          <span style={{
+            fontSize: '24px',
+            fontWeight: '700',
+            letterSpacing: '-0.5px',
+            backgroundImage: 'linear-gradient(90deg, #EFA8BC 0%, #C5A8D8 50%, #8EC4E4 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}>VoiceShape</span>
+        </div>
         <button
           onClick={() => { const el = document.querySelector('input[type="email"]') as HTMLInputElement; el?.focus() }}
           className="inline-flex items-center gap-2 rounded-full bg-sky-50 border border-sky-200 px-4 py-1.5 text-sm text-sky-700 font-medium w-fit mb-4 hover:bg-sky-100 transition-colors cursor-pointer"

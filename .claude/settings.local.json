@@ -4,7 +4,9 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(copy \"C:\\\\Users\\\\arday\\\\Desktop\\\\voiceshape-landing\\\\public\\\\Screenshot_tool.png\" \"C:\\\\Users\\\\arday\\\\Desktop\\\\voiceshape-landing\\\\.claude\\\\worktrees\\\\festive-curran-02b14c\\\\public\\\\Screenshot_tool.png\")",
       "Bash(python3 -c ' *)",
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(git add *)",
+      "Bash(git commit *)"
     ]
   }
 }
