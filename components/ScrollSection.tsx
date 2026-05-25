@@ -257,9 +257,7 @@ function MobileLayout() {
         <div className="max-w-lg mx-auto flex flex-col gap-16">
           {features.map((f, i) => (
             <div key={i} className="flex flex-col items-center gap-6">
-              <div style={{ transform: 'perspective(1000px) rotateY(-18deg) rotateX(4deg)' }}>
-                <Phone activePanel={i} />
-              </div>
+              <Phone activePanel={i} />
               <div className="text-center">
                 <p className="text-sky-400 text-sm font-semibold uppercase tracking-widest mb-2">{f.subtitle}</p>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{f.title}</h3>
