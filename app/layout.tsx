@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: 'VoiceShape',
   description:
     'AI-powered daily voice coaching for trans men, trans women, non-binary individuals, and anyone on their voice journey. Like Duolingo, but for your voice.',
-  icons: { icon: '/Logo_trans.png', apple: '/Logo_trans.png' },
+  icons: { icon: '/logo-new.jpg', apple: '/logo-new.jpg' },
 };
 
 export default function RootLayout({
