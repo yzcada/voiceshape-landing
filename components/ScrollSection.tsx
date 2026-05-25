@@ -209,11 +209,6 @@ const features = [
 /* ─── Mobile layout ─── */
 
 function MobileLayout() {
-  const screens = [
-    <PitchScopeScreen key={0} />,
-    <DailyPathScreen key={1} />,
-    <ProgressScreen key={2} />,
-  ]
   return (
     <section className="bg-white">
       <div
@@ -262,12 +257,8 @@ function MobileLayout() {
         <div className="max-w-lg mx-auto flex flex-col gap-16">
           {features.map((f, i) => (
             <div key={i} className="flex flex-col items-center gap-6">
-              <div style={{ width: 224, height: 460, position: 'relative', borderRadius: 44, background: '#1c1c1e', boxShadow: '0 0 0 1.5px #3a3a3c, 0 20px 60px rgba(0,0,0,0.35)' }}>
-                <div style={{ position: 'absolute', top: 4, left: 4, right: 4, bottom: 4, borderRadius: 40, overflow: 'hidden', background: '#000' }}>
-                  <div style={{ position: 'absolute', top: 10, left: '50%', transform: 'translateX(-50%)', width: 88, height: 28, borderRadius: 20, background: '#000', zIndex: 20 }} />
-                  {screens[i]}
-                </div>
-                <div style={{ position: 'absolute', bottom: 8, left: '50%', transform: 'translateX(-50%)', width: 88, height: 4, borderRadius: 2, background: 'rgba(255,255,255,0.25)' }} />
+              <div style={{ transform: 'perspective(1000px) rotateY(-18deg) rotateX(4deg)' }}>
+                <Phone activePanel={i} />
               </div>
               <div className="text-center">
                 <p className="text-sky-400 text-sm font-semibold uppercase tracking-widest mb-2">{f.subtitle}</p>
