@@ -97,7 +97,7 @@ function HeroPhoneScreen() {
 
 /* ─── Phone shell ─── */
 
-function Phone({ activePanel }: { activePanel: number }) {
+function Phone({ activePanel, flat = false }: { activePanel: number; flat?: boolean }) {
   const screens = [
     <PitchScopeScreen key={0} />,
     <DailyPathScreen key={1} />,
@@ -118,13 +118,9 @@ function Phone({ activePanel }: { activePanel: number }) {
           height: 520,
           borderRadius: 44,
           background: 'linear-gradient(160deg, #2c2c2e 0%, #1c1c1e 60%)',
-          boxShadow: [
-            '0 0 0 1px #3a3a3c',
-            'inset 0 0 0 1px rgba(255,255,255,0.06)',
-            '14px 10px 0 -1px #111',
-            '14px 10px 0 0 #252527',
-            '0 30px 80px rgba(0,0,0,0.5)',
-          ].join(', '),
+          boxShadow: flat
+            ? '0 0 0 1px #3a3a3c, inset 0 0 0 1px rgba(255,255,255,0.06), 0 30px 80px rgba(0,0,0,0.5)'
+            : '0 0 0 1px #3a3a3c, inset 0 0 0 1px rgba(255,255,255,0.06), 14px 10px 0 -1px #111, 14px 10px 0 0 #252527, 0 30px 80px rgba(0,0,0,0.5)',
           position: 'relative',
         }}
       >
@@ -257,9 +253,7 @@ function MobileLayout() {
         <div className="max-w-lg mx-auto flex flex-col gap-16">
           {features.map((f, i) => (
             <div key={i} className="flex flex-col items-center gap-6">
-              <div style={{ transform: 'perspective(1000px) rotateY(-18deg) rotateX(4deg)' }}>
-                <Phone activePanel={i} />
-              </div>
+              <Phone activePanel={i} flat />
               <div className="text-center">
                 <p className="text-sky-400 text-sm font-semibold uppercase tracking-widest mb-2">{f.subtitle}</p>
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">{f.title}</h3>
