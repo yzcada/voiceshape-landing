@@ -1,0 +1,12 @@
+[
+  {
+    "email": "test@example.com",
+    "timestamp": "2026-05-18T14:20:34.367Z",
+    "gdpr_consent": true
+  },
+  {
+    "email": "ardayc36@gmail.com",
+    "timestamp": "2026-05-21T16:09:54.797Z",
+    "gdpr_consent": true
+  }
+]
