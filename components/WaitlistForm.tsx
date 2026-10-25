@@ -2,7 +2,8 @@
 
 import { useState, FormEvent } from 'react'
 
-export default function WaitlistForm({ className = '' }: { className?: string }) {
+// Pilot sign-up (stored in the Supabase `waitlist` table via /api/waitlist).
+export default function WaitlistForm({ className = '', buttonLabel = 'Join the free pilot' }: { className?: string; buttonLabel?: string }) {
   const [email, setEmail] = useState('')
   const [gdpr, setGdpr] = useState(false)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -25,9 +26,9 @@ export default function WaitlistForm({ className = '' }: { className?: string })
 
   if (status === 'success') {
     return (
-      <div className={`rounded-2xl bg-sky-50 border border-sky-200 px-6 py-4 text-sky-800 ${className}`}>
-        <p className="font-semibold text-sm">You&apos;re on the list! 🎉</p>
-        <p className="text-sm mt-0.5 text-sky-600">We&apos;ll be in touch when VoiceShape launches.</p>
+      <div className={`rounded-2xl bg-brand-green/10 border border-brand-green/30 px-6 py-4 text-brand-green ${className}`}>
+        <p className="font-semibold text-sm">Thanks, you&apos;re in!</p>
+        <p className="text-sm mt-0.5 text-gray-300">We&apos;ll be in touch by email to set up your pilot.</p>
       </div>
     )
   }
@@ -38,36 +39,34 @@ export default function WaitlistForm({ className = '' }: { className?: string })
         <input
           type="email"
           required
-          placeholder="your@email.com"
+          placeholder="you@yourpractice.com"
           value={email}
           onChange={e => setEmail(e.target.value)}
-          className="flex-1 rounded-full px-5 py-3 border border-gray-200 text-sm outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent bg-white"
+          className="flex-1 rounded-full px-5 py-3 border border-white/10 bg-white/[0.06] text-sm text-white placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent"
         />
         <button
           type="submit"
           disabled={status === 'loading' || !gdpr}
-          className="rounded-full px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer whitespace-nowrap"
-          style={{ background: 'linear-gradient(90deg, #EFA8BC 0%, #C5A8D8 50%, #8EC4E4 100%)' }}
+          className="rounded-full px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition-opacity disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer whitespace-nowrap brand-gradient-button"
         >
-          {status === 'loading' ? 'Joining...' : 'Join Waitlist'}
+          {status === 'loading' ? 'Sending…' : buttonLabel}
         </button>
       </div>
-      <label className="flex items-start gap-2 text-xs text-gray-500 cursor-pointer">
+      <label className="flex items-start gap-2 text-xs text-gray-400 cursor-pointer">
         <input
           type="checkbox"
           required
           checked={gdpr}
           onChange={e => setGdpr(e.target.checked)}
-          className="mt-0.5 accent-sky-400 flex-shrink-0"
+          className="mt-0.5 accent-brand-blue flex-shrink-0"
         />
         <span>
-          I agree to be added to the VoiceShape waitlist and contacted about the app launch.
-          Data stored in the EU.{' '}
-          <a href="/privacy" className="underline hover:text-sky-600">Privacy Policy</a>.
+          I agree to be contacted about the VoiceShape pilot. Data stored in the EU.{' '}
+          <a href="/privacy" className="underline hover:text-white">Privacy Policy</a>.
         </span>
       </label>
       {status === 'error' && (
-        <p className="text-xs text-red-500">Something went wrong. Please try again.</p>
+        <p className="text-xs text-red-400">Something went wrong. Please try again or email hi@voiceshape.app.</p>
       )}
     </form>
   )

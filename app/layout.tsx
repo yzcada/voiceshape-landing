@@ -14,10 +14,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'VoiceShape',
+  title: 'VoiceShape · daily voice practice between sessions',
   description:
-    'AI-powered daily voice coaching for trans men, trans women, non-binary individuals, and anyone on their voice journey. Like Duolingo, but for your voice.',
-  icons: { icon: '/logo-new.jpg', apple: '/logo-new.jpg' },
+    "Turn one session a week into practice every day. Voice coaches and speech therapists build personalised daily practice with AI and see their clients' progress before the next session.",
+  icons: { icon: '/brand-icon.png', apple: '/brand-icon.png' },
 };
 
 export default function RootLayout({

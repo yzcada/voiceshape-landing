@@ -1,23 +1,99 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0F1115;
+  --foreground: #E8EAED;
+  color-scheme: dark;
 }
 
+/* Brand: green → blue (see WEBSITE_BRIEF.md §0b). Soft = logo/icon tones, deep = wordmark/accents,
+   ink = text on light backgrounds (readable contrast). */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-brand-pink: #EFA8BC;
-  --color-brand-purple: #C5A8D8;
-  --color-brand-cyan: #8EC4E4;
+  --color-brand-green: #4AB04E;
+  --color-brand-blue: #369AF9;
+  --color-brand-green-soft: #71BF72;
+  --color-brand-blue-soft: #65AEFA;
+  --color-brand-green-ink: #2E7D32;
+  --color-brand-blue-ink: #1E6FC4;
+  --color-brand-teal: #3FA6A8;
 }
 
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* The voice changes, the colour changes: left = green, right = blue. */
+.brand-gradient-text {
+  background-image: linear-gradient(90deg, #4AB04E 0%, #369AF9 100%);
+  background-image: linear-gradient(90deg in oklab, #4AB04E 0%, #369AF9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Slightly deeper so white button text stays readable. */
+.brand-gradient-button {
+  background-image: linear-gradient(90deg, #3E9F44 0%, #2C86E2 100%);
+  background-image: linear-gradient(90deg in oklab, #3E9F44 0%, #2C86E2 100%);
+}
+
+.brand-gradient-soft {
+  background-image: linear-gradient(135deg, #71BF72 0%, #65AEFA 100%);
+  background-image: linear-gradient(135deg in oklab, #71BF72 0%, #65AEFA 100%);
+}
+
+/* Cards whose border lights up in the brand colours around the mouse
+   (position comes from components/GlowEffects.tsx). */
+.glow-card {
+  position: relative;
+  isolation: isolate;
+  --x: -1000px;
+  --y: -1000px;
+}
+
+/* Border: the full green → blue gradient, revealed in a spotlight around the mouse
+   (also on neighbouring cards). Mask = spotlight ∩ 1px ring. */
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #4AB04E 0%, #3FA6A8 50%, #369AF9 100%);
+  -webkit-mask:
+    radial-gradient(220px circle at var(--x) var(--y), #000 30%, transparent 80%),
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: source-in, xor;
+  mask:
+    radial-gradient(220px circle at var(--x) var(--y), #000 30%, transparent 80%),
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: intersect, exclude;
+  pointer-events: none;
+}
+
+/* Dark-theme hero glow. */
+.brand-hero-glow-dark {
+  background:
+    radial-gradient(ellipse 60% 70% at 85% 10%, rgba(54, 154, 249, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 10% 90%, rgba(74, 176, 78, 0.12) 0%, transparent 60%);
+}
+
+/* Faint brand glow behind the hero (light pages). */
+.brand-hero-glow {
+  background:
+    radial-gradient(ellipse 80% 80% at 100% 0%, rgba(54, 154, 249, 0.10) 0%, rgba(74, 176, 78, 0.07) 40%, transparent 70%),
+    white;
 }

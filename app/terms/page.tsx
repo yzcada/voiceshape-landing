@@ -1,12 +1,14 @@
+import Link from 'next/link'
+
 export const metadata = {
   title: 'Terms of Service — VoiceShape',
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="pb-8 border-b border-gray-100 last:border-0">
-      <h2 className="text-lg font-bold text-gray-900 mb-4">{title}</h2>
-      <div className="space-y-3 text-gray-600 leading-relaxed text-sm">{children}</div>
+    <section className="pb-8 border-b border-white/10 last:border-0">
+      <h2 className="text-lg font-bold text-white mb-4">{title}</h2>
+      <div className="space-y-3 text-gray-400 leading-relaxed text-sm">{children}</div>
     </section>
   )
 }
@@ -14,7 +16,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 export default function TermsPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-20">
-      <h1 className="text-5xl font-black text-gray-900 mb-3">Terms of Service</h1>
+      <h1 className="text-5xl font-black text-white mb-3">Terms of Service</h1>
       <p className="text-sm text-gray-400 mb-12">Last updated: May 2026</p>
 
       <div className="space-y-8">
@@ -26,9 +28,9 @@ export default function TermsPage() {
             functionalities, real-time analysis tools, and progress tracking. The App is provided worldwide.
           </p>
           <p>1.2 Provider and contractual partner for all services related to the App is:</p>
-          <div className="bg-gray-50 rounded-xl px-5 py-4 space-y-1">
+          <div className="bg-white/5 rounded-xl px-5 py-4 space-y-1">
             <p><strong>App:</strong> VoiceShape</p>
-            <p><strong>E-Mail:</strong> <a href="mailto:hi@voiceshape.app" className="text-sky-600 underline">hi@voiceshape.app</a></p>
+            <p><strong>E-Mail:</strong> <a href="mailto:hi@voiceshape.app" className="text-brand-blue underline">hi@voiceshape.app</a></p>
           </div>
           <p>
             1.3 Deviating or supplementary terms and conditions of the user are not recognized unless the
@@ -119,7 +121,7 @@ export default function TermsPage() {
           <p>
             5.4 <strong>Right of withdrawal:</strong> Consumers have a 14-day right of withdrawal after
             payment without giving reasons. A message to{' '}
-            <a href="mailto:hi@voiceshape.app" className="text-sky-600 underline">hi@voiceshape.app</a>{' '}
+            <a href="mailto:hi@voiceshape.app" className="text-brand-blue underline">hi@voiceshape.app</a>{' '}
             is sufficient.
           </p>
         </Section>
@@ -173,14 +175,14 @@ export default function TermsPage() {
           </p>
           <p>
             8.4 Termination may be declared by email to{' '}
-            <a href="mailto:hi@voiceshape.app" className="text-sky-600 underline">hi@voiceshape.app</a>.
+            <a href="mailto:hi@voiceshape.app" className="text-brand-blue underline">hi@voiceshape.app</a>.
           </p>
         </Section>
 
         <Section title="9. Data Protection">
           <p>
             For information on how personal data is handled, please refer to our{' '}
-            <a href="/privacy" className="text-sky-600 underline">Privacy Policy</a>, which is available
+            <a href="/privacy" className="text-brand-blue underline">Privacy Policy</a>, which is available
             on the website and within the App.
           </p>
         </Section>
@@ -223,8 +225,8 @@ export default function TermsPage() {
 
       </div>
 
-      <div className="mt-12 pt-8 border-t border-gray-100">
-        <a href="/" className="text-sm text-sky-600 hover:underline">← Back to VoiceShape</a>
+      <div className="mt-12 pt-8 border-t border-white/10">
+        <Link href="/" className="text-sm text-brand-blue hover:underline">← Back to VoiceShape</Link>
       </div>
     </main>
   )
