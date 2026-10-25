@@ -17,7 +17,8 @@ export const metadata: Metadata = {
   title: 'VoiceShape · daily voice practice between sessions',
   description:
     "Turn one session a week into practice every day. Voice coaches and speech therapists build personalised daily practice with AI and see their clients' progress before the next session.",
-  icons: { icon: '/brand-icon.png', apple: '/brand-icon.png' },
+  // Browser tab icon comes from app/icon.png (round); the square icon is for iOS home screens.
+  icons: { icon: [{ url: '/icon.png?v=2', type: 'image/png' }], apple: '/brand-icon.png' },
 };
 
 export default function RootLayout({
