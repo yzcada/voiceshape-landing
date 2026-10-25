@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0F1115;
-  --foreground: #E8EAED;
-  color-scheme: dark;
+  --background: #ffffff;
+  --foreground: #111827;
+  color-scheme: light;
 }
 
 /* Brand: green → blue (see WEBSITE_BRIEF.md §0b). Soft = logo/icon tones, deep = wordmark/accents,
@@ -33,25 +33,91 @@ html {
   scroll-behavior: smooth;
 }
 
-/* The voice changes, the colour changes: left = green, right = blue. */
+/* The voice changes, the colour changes. Brand colours are "poured paint": many small green
+   and blue blobs drift across text, buttons and the logo, each on its own path, over an even
+   green/blue base, so no single colour dominates and every part keeps moving. */
+@keyframes brand-marble {
+  0%   { background-position: -10% 0%,   110% 100%, 30% 120%,  70% -20%,  0% 60%,   100% 30%,  0 0; }
+  20%  { background-position: 40% 80%,   60% 10%,   100% 40%,  -10% 60%, 80% 0%,   20% 100%,  0 0; }
+  40%  { background-position: 100% 20%,  -10% 60%,  60% -10%,  30% 110%, 40% 100%, 70% 0%,    0 0; }
+  60%  { background-position: 60% 110%,  30% -10%,  -10% 50%,  110% 40%, 110% 60%, 0% 70%,    0 0; }
+  80%  { background-position: 0% 40%,    100% 70%,  40% 100%,  60% 0%,   30% -10%, 90% 110%,  0 0; }
+  100% { background-position: 80% -10%,  10% 30%,   110% 80%,  0% 100%,  70% 40%,  40% 0%,    0 0; }
+}
+
 .brand-gradient-text {
-  background-image: linear-gradient(90deg, #4AB04E 0%, #369AF9 100%);
-  background-image: linear-gradient(90deg in oklab, #4AB04E 0%, #369AF9 100%);
+  --m-green: #36963B;
+  --m-blue: #1F7FE0;
+  background-image:
+    radial-gradient(closest-side, var(--m-green), transparent),
+    radial-gradient(closest-side, var(--m-blue), transparent),
+    radial-gradient(closest-side, var(--m-green), transparent),
+    radial-gradient(closest-side, var(--m-blue), transparent),
+    radial-gradient(closest-side, var(--m-green), transparent),
+    radial-gradient(closest-side, var(--m-blue), transparent),
+    linear-gradient(110deg, var(--m-green), var(--m-blue), var(--m-green), var(--m-blue));
+  background-size: 55% 170%, 50% 160%, 60% 180%, 45% 150%, 50% 170%, 58% 175%, 100% 100%;
+  background-repeat: no-repeat;
+  animation: brand-marble 4s ease-in-out infinite alternate;
+}
+
+.brand-gradient-text {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Slightly deeper so white button text stays readable. */
+/* Buttons: a static green → blue gradient, deep enough that white text stays readable. */
 .brand-gradient-button {
-  background-image: linear-gradient(90deg, #3E9F44 0%, #2C86E2 100%);
-  background-image: linear-gradient(90deg in oklab, #3E9F44 0%, #2C86E2 100%);
+  background-image: linear-gradient(90deg, #2F8A35 0%, #1E6FC8 100%);
+  background-image: linear-gradient(90deg in oklab, #2F8A35 0%, #1E6FC8 100%);
 }
 
 .brand-gradient-soft {
   background-image: linear-gradient(135deg, #71BF72 0%, #65AEFA 100%);
   background-image: linear-gradient(135deg in oklab, #71BF72 0%, #65AEFA 100%);
 }
+
+/* Inside the phone mock-ups: static gradients, like the app itself. */
+.mock-btn {
+  background-image: linear-gradient(90deg, #3E9F44 0%, #2C86E2 100%);
+  background-image: linear-gradient(90deg in oklab, #3E9F44 0%, #2C86E2 100%);
+}
+
+.mock-soft {
+  background-image: linear-gradient(135deg, #71BF72 0%, #65AEFA 100%);
+  background-image: linear-gradient(135deg in oklab, #71BF72 0%, #65AEFA 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-gradient-text { animation: none; }
+}
+
+/* ─── Background: half smoke, half cloud. Many soft, elongated wisps drifting and turning
+   independently near the edges (positions animated by components/SmokeBackground.tsx) ─── */
+.smoke-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: #ffffff;
+}
+
+.smoke {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44vmax;
+  height: 20vmax;
+  margin: -10vmax 0 0 -22vmax;
+  border-radius: 50%;
+  filter: blur(42px);
+  will-change: transform;
+}
+
+.smoke-green { background: radial-gradient(ellipse at 50% 50%, rgba(56, 160, 61, 0.42) 0%, rgba(56, 160, 61, 0.16) 40%, transparent 70%); }
+.smoke-blue  { background: radial-gradient(ellipse at 50% 50%, rgba(36, 132, 230, 0.42) 0%, rgba(36, 132, 230, 0.16) 40%, transparent 70%); }
 
 /* Cards whose border lights up in the brand colours around the mouse
    (position comes from components/GlowEffects.tsx). */
@@ -60,6 +126,7 @@ html {
   isolation: isolate;
   --x: -1000px;
   --y: -1000px;
+  border: 2px solid rgba(46, 125, 160, 0.22);
 }
 
 /* Only on devices with a real mouse: phones/tablets have no hover, and some mobile browsers
@@ -70,10 +137,10 @@ html {
   .glow-card::before {
     content: "";
     position: absolute;
-    inset: -1px;
+    inset: -2px;
     border-radius: inherit;
-    padding: 1.5px;
-    background: linear-gradient(135deg, #4AB04E 0%, #3FA6A8 50%, #369AF9 100%);
+    padding: 3.5px;
+    background: linear-gradient(135deg, #2F8A35 0%, #2B8E96 50%, #1E72CF 100%);
     -webkit-mask:
       radial-gradient(220px circle at var(--x) var(--y), #000 30%, transparent 80%),
       linear-gradient(#000 0 0) content-box,
@@ -86,18 +153,4 @@ html {
     mask-composite: intersect, exclude;
     pointer-events: none;
   }
-}
-
-/* Dark-theme hero glow. */
-.brand-hero-glow-dark {
-  background:
-    radial-gradient(ellipse 60% 70% at 85% 10%, rgba(54, 154, 249, 0.16) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 60% at 10% 90%, rgba(74, 176, 78, 0.12) 0%, transparent 60%);
-}
-
-/* Faint brand glow behind the hero (light pages). */
-.brand-hero-glow {
-  background:
-    radial-gradient(ellipse 80% 80% at 100% 0%, rgba(54, 154, 249, 0.10) 0%, rgba(74, 176, 78, 0.07) 40%, transparent 70%),
-    white;
 }

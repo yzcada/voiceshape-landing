@@ -44,20 +44,20 @@ export default function FaqSection() {
     <section id="faq" className="py-24 px-6 relative z-10 scroll-mt-16">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Questions, answered</h2>
-          <p className="text-gray-400">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Questions, answered</h2>
+          <p className="text-gray-600">
             Something else? Write to{' '}
-            <a href="mailto:hi@voiceshape.app" className="text-brand-blue underline">hi@voiceshape.app</a>
+            <a href="mailto:hi@voiceshape.app" className="text-brand-blue-ink underline">hi@voiceshape.app</a>
           </p>
         </div>
-        <div className="flex flex-col divide-y divide-white/10">
+        <div className="flex flex-col divide-y divide-gray-200">
           {faqs.map((faq, i) => (
             <div key={i}>
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between py-5 text-left gap-4 cursor-pointer"
               >
-                <span className="font-medium text-white">{faq.q}</span>
+                <span className="font-medium text-gray-900">{faq.q}</span>
                 <svg
                   className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-300 ${open === i ? 'rotate-180' : ''}`}
                   fill="none"
@@ -68,7 +68,7 @@ export default function FaqSection() {
                 </svg>
               </button>
               <div style={{ maxHeight: open === i ? '600px' : '0px', overflow: 'hidden', transition: 'max-height 0.35s ease' }}>
-                <p className="text-gray-400 pb-5 leading-relaxed">{faq.a}</p>
+                <p className="text-gray-600 pb-5 leading-relaxed">{faq.a}</p>
               </div>
             </div>
           ))}

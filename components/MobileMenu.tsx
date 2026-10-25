@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 
 const LINKS = [
   { href: '#how', label: 'How it works' },
-  { href: '#clients', label: 'For your clients' },
+  { href: '#use-cases', label: 'Use cases' },
   { href: '#trust', label: 'Privacy' },
   { href: '#faq', label: 'FAQ' },
 ]
@@ -27,7 +27,7 @@ export default function MobileMenu() {
         aria-label={open ? 'Close menu' : 'Open menu'}
         aria-expanded={open}
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray-200 active:bg-white/10"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 bg-white/70 text-gray-700 active:bg-gray-100"
       >
         <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2}>
           {open ? (
@@ -38,13 +38,13 @@ export default function MobileMenu() {
         </svg>
       </button>
       {open && (
-        <nav className="absolute left-0 right-0 top-16 border-b border-white/10 bg-[#0F1115] px-6 pb-6 pt-2 shadow-2xl shadow-black/60">
+        <nav className="absolute left-0 right-0 top-16 border-b border-gray-200 bg-white px-6 pb-6 pt-2 shadow-2xl shadow-black/10">
           {LINKS.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setOpen(false)}
-              className="block border-b border-white/5 py-4 text-base text-gray-200"
+              className="block border-b border-gray-100 py-4 text-base text-gray-800"
             >
               {l.label}
             </a>

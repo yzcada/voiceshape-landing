@@ -26,9 +26,9 @@ export default function WaitlistForm({ className = '', buttonLabel = 'Join the f
 
   if (status === 'success') {
     return (
-      <div className={`rounded-2xl bg-brand-green/10 border border-brand-green/30 px-6 py-4 text-brand-green ${className}`}>
+      <div className={`rounded-2xl bg-brand-green/10 border border-brand-green/30 px-6 py-4 text-brand-green-ink ${className}`}>
         <p className="font-semibold text-sm">Thanks, you&apos;re in!</p>
-        <p className="text-sm mt-0.5 text-gray-300">We&apos;ll be in touch by email to set up your pilot.</p>
+        <p className="text-sm mt-0.5 text-gray-600">We&apos;ll be in touch by email to set up your pilot.</p>
       </div>
     )
   }
@@ -42,7 +42,7 @@ export default function WaitlistForm({ className = '', buttonLabel = 'Join the f
           placeholder="you@yourpractice.com"
           value={email}
           onChange={e => setEmail(e.target.value)}
-          className="flex-1 rounded-full px-5 py-3 border border-white/10 bg-white/[0.06] text-sm text-white placeholder:text-gray-500 outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent"
+          className="flex-1 rounded-full px-5 py-3 border border-gray-200 bg-white text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent"
         />
         <button
           type="submit"
@@ -52,7 +52,7 @@ export default function WaitlistForm({ className = '', buttonLabel = 'Join the f
           {status === 'loading' ? 'Sending…' : buttonLabel}
         </button>
       </div>
-      <label className="flex items-start gap-2 text-xs text-gray-400 cursor-pointer">
+      <label className="flex items-start gap-2 text-xs text-gray-500 cursor-pointer">
         <input
           type="checkbox"
           required
@@ -62,11 +62,11 @@ export default function WaitlistForm({ className = '', buttonLabel = 'Join the f
         />
         <span>
           I agree to be contacted about the VoiceShape pilot. Data stored in the EU.{' '}
-          <a href="/privacy" className="underline hover:text-white">Privacy Policy</a>.
+          <a href="/privacy" className="underline hover:text-gray-900">Privacy Policy</a>.
         </span>
       </label>
       {status === 'error' && (
-        <p className="text-xs text-red-400">Something went wrong. Please try again or email hi@voiceshape.app.</p>
+        <p className="text-xs text-red-500">Something went wrong. Please try again or email hi@voiceshape.app.</p>
       )}
     </form>
   )
