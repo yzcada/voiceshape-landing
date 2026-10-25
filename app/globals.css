@@ -62,26 +62,30 @@ html {
   --y: -1000px;
 }
 
-/* Border: the full green → blue gradient, revealed in a spotlight around the mouse
-   (also on neighbouring cards). Mask = spotlight ∩ 1px ring. */
-.glow-card::before {
-  content: "";
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1.5px;
-  background: linear-gradient(135deg, #4AB04E 0%, #3FA6A8 50%, #369AF9 100%);
-  -webkit-mask:
-    radial-gradient(220px circle at var(--x) var(--y), #000 30%, transparent 80%),
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  -webkit-mask-composite: source-in, xor;
-  mask:
-    radial-gradient(220px circle at var(--x) var(--y), #000 30%, transparent 80%),
-    linear-gradient(#000 0 0) content-box,
-    linear-gradient(#000 0 0);
-  mask-composite: intersect, exclude;
-  pointer-events: none;
+/* Only on devices with a real mouse: phones/tablets have no hover, and some mobile browsers
+   handle composited masks differently (the border light could cover the card). */
+@media (hover: hover) and (pointer: fine) {
+  /* Border: the full green → blue gradient, revealed in a spotlight around the mouse
+     (also on neighbouring cards). Mask = spotlight ∩ 1px ring. */
+  .glow-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(135deg, #4AB04E 0%, #3FA6A8 50%, #369AF9 100%);
+    -webkit-mask:
+      radial-gradient(220px circle at var(--x) var(--y), #000 30%, transparent 80%),
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: source-in, xor;
+    mask:
+      radial-gradient(220px circle at var(--x) var(--y), #000 30%, transparent 80%),
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: intersect, exclude;
+    pointer-events: none;
+  }
 }
 
 /* Dark-theme hero glow. */

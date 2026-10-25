@@ -4,10 +4,11 @@ import FaqSection from '@/components/FaqSection'
 import { ClientPracticeMock, CoachPlanMock } from '@/components/AppMocks'
 import BrandLogo from '@/components/BrandLogo'
 import GlowEffects from '@/components/GlowEffects'
+import MobileMenu from '@/components/MobileMenu'
 
 export default function Home() {
   return (
-    <main className="overflow-x-hidden">
+    <main className="overflow-x-clip">
       <GlowEffects />
       <Nav />
       <Hero />
@@ -72,9 +73,12 @@ function Nav() {
           <a href="#trust" className="hover:text-white transition-colors">Privacy</a>
           <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
         </nav>
-        <a href="#pilot" className="rounded-full px-5 py-2 text-sm font-semibold text-white brand-gradient-button hover:opacity-90 transition-opacity">
-          Join the pilot
-        </a>
+        <div className="flex items-center gap-3">
+          <a href="#pilot" className="hidden sm:inline-flex rounded-full px-5 py-2 text-sm font-semibold text-white brand-gradient-button hover:opacity-90 transition-opacity">
+            Join the pilot
+          </a>
+          <MobileMenu />
+        </div>
       </div>
     </header>
   )
@@ -304,7 +308,7 @@ function Footer() {
     <footer className="border-t border-white/5 px-6 py-8">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <BrandLogo variant="mark" size={22} textSize={17} />
-        <nav className="flex flex-wrap gap-5 text-sm text-gray-500">
+        <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-gray-500">
           <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
           <a href="/terms" className="hover:text-white transition-colors">Terms of Service</a>
           <a href="mailto:hi@voiceshape.app" className="hover:text-white transition-colors">hi@voiceshape.app</a>

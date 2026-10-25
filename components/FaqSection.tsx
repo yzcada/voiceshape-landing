@@ -41,7 +41,7 @@ export default function FaqSection() {
   const [open, setOpen] = useState<number | null>(null)
 
   return (
-    <section id="faq" className="py-24 px-6 relative z-10">
+    <section id="faq" className="py-24 px-6 relative z-10 scroll-mt-16">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Questions, answered</h2>
@@ -67,7 +67,7 @@ export default function FaqSection() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              <div style={{ maxHeight: open === i ? '240px' : '0px', overflow: 'hidden', transition: 'max-height 0.35s ease' }}>
+              <div style={{ maxHeight: open === i ? '600px' : '0px', overflow: 'hidden', transition: 'max-height 0.35s ease' }}>
                 <p className="text-gray-400 pb-5 leading-relaxed">{faq.a}</p>
               </div>
             </div>
