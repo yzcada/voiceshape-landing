@@ -7,6 +7,7 @@
 // Phones and small screens get the same content as a normal stacked page.
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
+import HeroWave from './HeroWave'
 import { AiCreateScreen, ClientPracticeScreen, CoachPlanScreen, PhoneFrame, ProgressScreen } from './AppMocks'
 import { ICONS, Icon } from './Icon'
 
@@ -101,10 +102,6 @@ function windowVis(s: number, start: number, end: number, edge: number, keepAtEn
 function HeroText() {
   return (
     <>
-      <a href="#pilot" className="inline-flex items-center gap-2 rounded-full bg-brand-blue/10 border border-brand-blue/25 px-4 py-1.5 text-sm text-brand-blue-ink font-medium mb-6 hover:bg-brand-blue/15 transition-colors">
-        <span className="w-2 h-2 rounded-full bg-brand-green animate-pulse" />
-        Free pilot for voice coaches &amp; speech therapists
-      </a>
       <h1 className="text-4xl md:text-5xl xl:text-6xl 2xl:text-7xl font-bold tracking-tight text-gray-900 leading-[1.06] mb-6">
         Turn one session a week into <span className="brand-gradient-text">practice every day.</span>
       </h1>
@@ -116,7 +113,7 @@ function HeroText() {
         <a href="#pilot" className="rounded-full px-7 py-3.5 text-base font-semibold text-white brand-gradient-button hover:opacity-90 transition-opacity shadow-lg shadow-brand-blue/20">
           Join the free pilot
         </a>
-        <a href="#how" className="rounded-full px-7 py-3.5 text-base font-semibold text-gray-800 border border-gray-300 bg-white/60 hover:bg-white transition-colors">
+        <a href="#how" className="rounded-full px-7 py-3.5 text-base font-semibold text-gray-800 glass hover:bg-white/80 transition-colors">
           See how it works
         </a>
       </div>
@@ -127,7 +124,7 @@ function HeroText() {
 
 function Card({ icon, title, text }: { icon: string; title: string; text: string }) {
   return (
-    <div className="glow-card h-full rounded-3xl bg-white/80 backdrop-blur-sm p-7 shadow-sm">
+    <div className="glow-card glass h-full rounded-3xl p-7">
       <div className="w-11 h-11 rounded-2xl bg-brand-blue/10 flex items-center justify-center text-brand-blue-ink mb-4">
         <Icon d={icon} className="w-5 h-5" />
       </div>
@@ -151,8 +148,13 @@ function GroupHeading({ eyebrow, title }: { eyebrow: string; title: React.ReactN
 function StackedStory() {
   return (
     <div>
-      <section className="px-6 pt-14 pb-16">
-        <HeroText />
+      <section className="relative px-6 pt-14 pb-40">
+        <div className="absolute inset-x-0 bottom-2 h-36">
+          <HeroWave spread={0.28} />
+        </div>
+        <div className="relative">
+          <HeroText />
+        </div>
       </section>
       <section id="how" className="px-6 py-10 flex flex-col gap-16 scroll-mt-16">
         {FEATURES.map((f) => (
@@ -186,6 +188,7 @@ export default function StoryScroll() {
   const sectionRef = useRef<HTMLElement>(null)
   const phoneRef = useRef<HTMLDivElement>(null)
   const heroRef = useRef<HTMLDivElement>(null)
+  const waveRef = useRef<HTMLDivElement>(null)
   const featuresRef = useRef<HTMLDivElement>(null)
   const groupRefs = useRef<(HTMLDivElement | null)[]>([])
   const featureRef = useRef(-1)
@@ -235,6 +238,8 @@ export default function StoryScroll() {
       phone.style.visibility = exit >= 1 ? 'hidden' : 'visible'
       hero.style.opacity = String(1 - clamp(a / 0.7))
       hero.style.visibility = a >= 0.7 ? 'hidden' : 'visible'
+      const wave = waveRef.current
+      if (wave) wave.style.opacity = String(1 - clamp(a / 0.6))
 
       // Phase B: which feature is showing (phone screen + text, cross-faded with CSS like the old site).
       const idx = s < FEATURES_START - 0.15 ? -1 : Math.min(FEATURES.length - 1, Math.max(0, Math.floor((s - FEATURES_START + 0.15) / FEATURE_LEN)))
@@ -285,6 +290,11 @@ export default function StoryScroll() {
       ))}
 
       <div className="sticky top-0 h-screen w-full overflow-hidden">
+        {/* Voice wave behind the hero (fades out with it) */}
+        <div ref={waveRef} className="absolute inset-x-0 top-1/2 h-[64vh] -translate-y-1/2" style={{ zIndex: 1 }}>
+          <HeroWave center={0.7} spread={0.22} fadeLeft />
+        </div>
+
         {/* Hero text */}
         <div ref={heroRef} className="absolute left-12 xl:left-24 top-1/2 -translate-y-1/2 max-w-[640px] 2xl:max-w-[760px]" style={{ zIndex: 2 }}>
           <HeroText />

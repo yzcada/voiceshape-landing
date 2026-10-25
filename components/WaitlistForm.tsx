@@ -26,7 +26,7 @@ export default function WaitlistForm({ className = '', buttonLabel = 'Join the f
 
   if (status === 'success') {
     return (
-      <div className={`rounded-2xl bg-brand-green/10 border border-brand-green/30 px-6 py-4 text-brand-green-ink ${className}`}>
+      <div className={`rounded-2xl bg-brand-pink/10 border border-brand-pink/30 px-6 py-4 text-brand-pink-ink ${className}`}>
         <p className="font-semibold text-sm">Thanks, you&apos;re in!</p>
         <p className="text-sm mt-0.5 text-gray-600">We&apos;ll be in touch by email to set up your pilot.</p>
       </div>

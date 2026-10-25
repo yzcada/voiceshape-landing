@@ -58,7 +58,7 @@ export function AiCreateScreen() {
         <p className="mt-0.5 text-[9px] text-gray-400">~5 min · 3 steps</p>
         {['Gentle hum warm-up', '8 words · Pitch 150–175 Hz', 'How natural did it feel?'].map((l) => (
           <p key={l} className="mt-1.5 flex items-center gap-1.5 text-[9.5px] text-gray-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand-green" />{l}
+            <span className="h-1.5 w-1.5 rounded-full bg-brand-pink" />{l}
           </p>
         ))}
       </div>
@@ -85,14 +85,14 @@ export function CoachPlanScreen() {
             <div className="flex items-center justify-between">
               <span className="text-[11px] font-bold text-white">{d.day}</span>
               {d.done ? (
-                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-brand-green text-white"><Check /></span>
+                <span className="flex h-4 w-4 items-center justify-center rounded-full bg-brand-pink text-white"><Check /></span>
               ) : d.today ? (
                 <span className="text-[9px] font-bold uppercase tracking-wider text-brand-blue">Today</span>
               ) : null}
             </div>
             {d.lines.map((l) => (
               <p key={l} className="mt-1 flex items-center gap-1 text-[10px] text-gray-400">
-                <span className="text-brand-green"><Up /></span>
+                <span className="text-brand-pink"><Up /></span>
                 {l}
               </p>
             ))}
@@ -130,7 +130,7 @@ export function ClientPracticeScreen() {
             <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
               <div className="h-full w-[74%] mock-btn" />
             </div>
-            <p className="mt-1 text-[10px] font-bold text-brand-green">4.4 / 6 s</p>
+            <p className="mt-1 text-[10px] font-bold text-brand-pink">4.4 / 6 s</p>
           </div>
         </div>
       </div>
@@ -152,7 +152,7 @@ export function ProgressScreen() {
           <div key={i} className="flex flex-col items-center gap-1">
             <span
               className={`flex h-5 w-5 items-center justify-center rounded-full text-white ${
-                week[i] === true ? 'bg-brand-green' : week[i] === false ? 'bg-amber-500' : 'bg-white/10'
+                week[i] === true ? 'bg-brand-pink' : week[i] === false ? 'bg-amber-500' : 'bg-white/10'
               }`}
             >
               {week[i] === true ? <Check /> : week[i] === false ? <span className="text-[8px] font-black">1</span> : null}
@@ -168,7 +168,7 @@ export function ProgressScreen() {
         </div>
         <div className="rounded-2xl bg-white/[0.04] p-3">
           <p className="text-[9px] font-semibold uppercase tracking-widest text-gray-500">In zone</p>
-          <p className="text-lg font-black text-brand-green">71%</p>
+          <p className="text-lg font-black text-brand-pink">71%</p>
         </div>
       </div>
       <p className="mt-4 text-[9px] font-semibold uppercase tracking-widest text-gray-500">Latest check-ins</p>

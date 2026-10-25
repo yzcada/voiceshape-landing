@@ -50,7 +50,7 @@ export default function FaqSection() {
             <a href="mailto:hi@voiceshape.app" className="text-brand-blue-ink underline">hi@voiceshape.app</a>
           </p>
         </div>
-        <div className="flex flex-col divide-y divide-gray-200">
+        <div className="glass rounded-3xl px-6 flex flex-col divide-y divide-gray-200/70">
           {faqs.map((faq, i) => (
             <div key={i}>
               <button

@@ -4,13 +4,11 @@ import FaqSection from '@/components/FaqSection'
 import BrandLogo from '@/components/BrandLogo'
 import GlowEffects from '@/components/GlowEffects'
 import MobileMenu from '@/components/MobileMenu'
-import SmokeBackground from '@/components/SmokeBackground'
 import StoryScroll from '@/components/StoryScroll'
 
 export default function Home() {
   return (
     <main className="overflow-x-clip">
-      <SmokeBackground />
       <GlowEffects />
       <Nav />
       <StoryScroll />
@@ -23,7 +21,7 @@ export default function Home() {
 
 function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200/60 bg-white/70 backdrop-blur-md">
+    <header className="sticky top-0 z-50 glass-bar border-b">
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 h-16">
         <a href="#" aria-label="VoiceShape home">
           <BrandLogo variant="mark" size={32} textSize={25} />
@@ -48,7 +46,7 @@ function Nav() {
 function PilotSection() {
   return (
     <section id="pilot" className="py-24 px-6 scroll-mt-16">
-      <div className="max-w-4xl mx-auto rounded-[36px] border-2 border-[rgba(46,125,160,0.22)] bg-white/75 backdrop-blur-sm shadow-xl shadow-brand-blue/5 p-10 md:p-14 text-center relative overflow-hidden">
+      <div className="max-w-4xl mx-auto glow-card glass rounded-[36px] p-10 md:p-14 text-center">
         <Image src="/brand-icon.png" alt="" width={72} height={72} className="relative mx-auto rounded-2xl shadow-lg shadow-brand-blue/20 mb-6" />
         <h2 className="relative text-3xl md:text-4xl font-bold text-gray-900 mb-4">
           Help shape <span className="brand-gradient-text">VoiceShape</span>

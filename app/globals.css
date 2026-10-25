@@ -6,25 +6,29 @@
   color-scheme: light;
 }
 
-/* Brand: green → blue (see WEBSITE_BRIEF.md §0b). Soft = logo/icon tones, deep = wordmark/accents,
+/* Brand: pink → blue, the original VoiceShape colours (logo-new / Logo_trans). Soft = logo tones,
    ink = text on light backgrounds (readable contrast). */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --color-brand-green: #4AB04E;
-  --color-brand-blue: #369AF9;
-  --color-brand-green-soft: #71BF72;
-  --color-brand-blue-soft: #65AEFA;
-  --color-brand-green-ink: #2E7D32;
-  --color-brand-blue-ink: #1E6FC4;
-  --color-brand-teal: #3FA6A8;
+  --color-brand-pink: #F5A9B8;
+  --color-brand-blue: #5BCEFA;
+  --color-brand-lavender: #C5A8D8;
+  --color-brand-pink-soft: #F8C3CE;
+  --color-brand-blue-soft: #93DCFB;
+  --color-brand-pink-ink: #B23466;
+  --color-brand-blue-ink: #13699F;
 }
 
 
+html {
+  background: #ffffff;
+}
+
 body {
-  background: var(--background);
+  background: transparent;
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
@@ -33,9 +37,9 @@ html {
   scroll-behavior: smooth;
 }
 
-/* The voice changes, the colour changes. Brand colours are "poured paint": many small green
+/* The voice changes, the colour changes. Brand colours are "poured paint": many small pink
    and blue blobs drift across text, buttons and the logo, each on its own path, over an even
-   green/blue base, so no single colour dominates and every part keeps moving. */
+   pink/blue base, so no single colour dominates and every part keeps moving. */
 @keyframes brand-marble {
   0%   { background-position: -10% 0%,   110% 100%, 30% 120%,  70% -20%,  0% 60%,   100% 30%,  0 0; }
   20%  { background-position: 40% 80%,   60% 10%,   100% 40%,  -10% 60%, 80% 0%,   20% 100%,  0 0; }
@@ -46,16 +50,16 @@ html {
 }
 
 .brand-gradient-text {
-  --m-green: #36963B;
-  --m-blue: #1F7FE0;
+  --m-pink: #C93D76;
+  --m-blue: #1580CC;
   background-image:
-    radial-gradient(closest-side, var(--m-green), transparent),
+    radial-gradient(closest-side, var(--m-pink), transparent),
     radial-gradient(closest-side, var(--m-blue), transparent),
-    radial-gradient(closest-side, var(--m-green), transparent),
+    radial-gradient(closest-side, var(--m-pink), transparent),
     radial-gradient(closest-side, var(--m-blue), transparent),
-    radial-gradient(closest-side, var(--m-green), transparent),
+    radial-gradient(closest-side, var(--m-pink), transparent),
     radial-gradient(closest-side, var(--m-blue), transparent),
-    linear-gradient(110deg, var(--m-green), var(--m-blue), var(--m-green), var(--m-blue));
+    linear-gradient(110deg, var(--m-pink), var(--m-blue), var(--m-pink), var(--m-blue));
   background-size: 55% 170%, 50% 160%, 60% 180%, 45% 150%, 50% 170%, 58% 175%, 100% 100%;
   background-repeat: no-repeat;
   animation: brand-marble 4s ease-in-out infinite alternate;
@@ -67,57 +71,45 @@ html {
   -webkit-text-fill-color: transparent;
 }
 
-/* Buttons: a static green → blue gradient, deep enough that white text stays readable. */
+/* Buttons: one solid blue, dark enough that white text stays readable. */
 .brand-gradient-button {
-  background-image: linear-gradient(90deg, #2F8A35 0%, #1E6FC8 100%);
-  background-image: linear-gradient(90deg in oklab, #2F8A35 0%, #1E6FC8 100%);
+  background-color: #1677C9;
 }
 
 .brand-gradient-soft {
-  background-image: linear-gradient(135deg, #71BF72 0%, #65AEFA 100%);
-  background-image: linear-gradient(135deg in oklab, #71BF72 0%, #65AEFA 100%);
+  background-image: linear-gradient(135deg, #F5A9B8 0%, #93DCFB 100%);
+  background-image: linear-gradient(135deg in oklab, #F5A9B8 0%, #93DCFB 100%);
 }
 
-/* Inside the phone mock-ups: static gradients, like the app itself. */
+/* Inside the phone mock-ups: solid blue buttons like the site, a static soft gradient for the pitch zone. */
 .mock-btn {
-  background-image: linear-gradient(90deg, #3E9F44 0%, #2C86E2 100%);
-  background-image: linear-gradient(90deg in oklab, #3E9F44 0%, #2C86E2 100%);
+  background-color: #1677C9;
 }
 
 .mock-soft {
-  background-image: linear-gradient(135deg, #71BF72 0%, #65AEFA 100%);
-  background-image: linear-gradient(135deg in oklab, #71BF72 0%, #65AEFA 100%);
+  background-image: linear-gradient(135deg, #F5A9B8 0%, #93DCFB 100%);
+  background-image: linear-gradient(135deg in oklab, #F5A9B8 0%, #93DCFB 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {
   .brand-gradient-text { animation: none; }
 }
 
-/* ─── Background: half smoke, half cloud. Many soft, elongated wisps drifting and turning
-   independently near the edges (positions animated by components/SmokeBackground.tsx) ─── */
-.smoke-layer {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-  background: #ffffff;
+/* ─── Plain white page; surfaces are frosted glass. ─── */
+.glass {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 34px rgba(110, 90, 150, 0.10);
 }
 
-.smoke {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 44vmax;
-  height: 20vmax;
-  margin: -10vmax 0 0 -22vmax;
-  border-radius: 50%;
-  filter: blur(42px);
-  will-change: transform;
+.glass-bar {
+  background: rgba(255, 255, 255, 0.55);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  border-color: rgba(255, 255, 255, 0.7);
 }
-
-.smoke-green { background: radial-gradient(ellipse at 50% 50%, rgba(56, 160, 61, 0.42) 0%, rgba(56, 160, 61, 0.16) 40%, transparent 70%); }
-.smoke-blue  { background: radial-gradient(ellipse at 50% 50%, rgba(36, 132, 230, 0.42) 0%, rgba(36, 132, 230, 0.16) 40%, transparent 70%); }
 
 /* Cards whose border lights up in the brand colours around the mouse
    (position comes from components/GlowEffects.tsx). */
@@ -126,13 +118,13 @@ html {
   isolation: isolate;
   --x: -1000px;
   --y: -1000px;
-  border: 2px solid rgba(46, 125, 160, 0.22);
+  border: 2px solid rgba(140, 100, 185, 0.40);
 }
 
 /* Only on devices with a real mouse: phones/tablets have no hover, and some mobile browsers
    handle composited masks differently (the border light could cover the card). */
 @media (hover: hover) and (pointer: fine) {
-  /* Border: the full green → blue gradient, revealed in a spotlight around the mouse
+  /* Border: the full pink → blue gradient, revealed in a spotlight around the mouse
      (also on neighbouring cards). Mask = spotlight ∩ 1px ring. */
   .glow-card::before {
     content: "";
@@ -140,7 +132,7 @@ html {
     inset: -2px;
     border-radius: inherit;
     padding: 3.5px;
-    background: linear-gradient(135deg, #2F8A35 0%, #2B8E96 50%, #1E72CF 100%);
+    background: linear-gradient(135deg, #C93D76 0%, #8F5BC2 50%, #1580CC 100%);
     -webkit-mask:
       radial-gradient(220px circle at var(--x) var(--y), #000 30%, transparent 80%),
       linear-gradient(#000 0 0) content-box,
