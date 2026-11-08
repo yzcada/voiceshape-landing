@@ -8,16 +8,19 @@ export default function PrivacyPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-20">
       <h1 className="text-4xl font-bold text-gray-900 mb-2">Privacy Policy</h1>
-      <p className="text-sm text-gray-600 mb-10">Last updated: May 2026</p>
+      <p className="text-sm text-gray-600 mb-10">Last updated: November 2026</p>
 
       <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
         <section>
           <h2 className="text-xl font-semibold text-gray-900 mb-3">1. Data Controller</h2>
           <p>
-            VoiceShape is operated from Germany (European Union). As data controller within the meaning
-            of the General Data Protection Regulation (GDPR), we are responsible for the personal data
-            you provide to us. Contact: <a href="mailto:hi@voiceshape.app" className="text-brand-blue-ink underline">hi@voiceshape.app</a>
+            The data controller within the meaning of the General Data Protection Regulation (GDPR) is:
+          </p>
+          <p className="mt-2">
+            Ada Yazıcı (VoiceShape)<br />
+            Krugenofen 15, 52066 Aachen, Germany<br />
+            Email: <a href="mailto:hi@voiceshape.app" className="text-brand-blue-ink underline">hi@voiceshape.app</a>
           </p>
         </section>
 
@@ -85,9 +88,10 @@ export default function PrivacyPage() {
         <section>
           <h2 className="text-xl font-semibold text-gray-900 mb-3">7. Right to Lodge a Complaint</h2>
           <p>
-            You have the right to lodge a complaint with a supervisory authority. In Germany, the
-            competent authority is the{' '}
-            <strong>Federal Commissioner for Data Protection and Freedom of Information (BfDI)</strong>.
+            You have the right to lodge a complaint with a supervisory authority. The authority
+            responsible for us is the{' '}
+            <strong>Landesbeauftragte für Datenschutz und Informationsfreiheit Nordrhein-Westfalen (LDI NRW)</strong>,
+            Kavalleriestraße 2–4, 40213 Düsseldorf.
             You may also contact the supervisory authority in your EU member state of residence.
           </p>
         </section>

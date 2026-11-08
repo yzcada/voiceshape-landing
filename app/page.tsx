@@ -33,6 +33,9 @@ function Nav() {
           <a href="#faq" className="hover:text-gray-900 transition-colors">FAQ</a>
         </nav>
         <div className="flex items-center gap-3">
+          <a href="https://my.voiceshape.app" className="hidden sm:inline-flex rounded-full px-4 py-2 text-sm font-semibold text-gray-700 hover:text-gray-900 transition-colors">
+            Log in
+          </a>
           <a href="#pilot" className="hidden sm:inline-flex rounded-full px-5 py-2 text-sm font-semibold text-white brand-gradient-button hover:opacity-90 transition-opacity">
             Join the pilot
           </a>
@@ -75,6 +78,7 @@ function Footer() {
         <nav className="flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-gray-500">
           <a href="/privacy" className="hover:text-gray-900 transition-colors">Privacy Policy</a>
           <a href="/terms" className="hover:text-gray-900 transition-colors">Terms of Service</a>
+          <a href="/impressum" className="hover:text-gray-900 transition-colors">Impressum</a>
           <a href="mailto:hi@voiceshape.app" className="hover:text-gray-900 transition-colors">hi@voiceshape.app</a>
         </nav>
         <div className="flex items-center gap-4">

@@ -56,6 +56,13 @@ export default function MobileMenu() {
           >
             Join the free pilot
           </a>
+          <a
+            href="https://my.voiceshape.app"
+            onClick={() => setOpen(false)}
+            className="mt-3 block rounded-full border border-gray-200 py-3.5 text-center text-base font-semibold text-gray-800"
+          >
+            Log in
+          </a>
         </nav>
       )}
     </div>
