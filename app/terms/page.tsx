@@ -30,7 +30,7 @@ export default function TermsPage() {
           <p>1.2 Provider and contractual partner for all services related to the Platform is:</p>
           <div className="bg-gray-50 rounded-xl px-5 py-4 space-y-1">
             <p><strong>Platform:</strong> VoiceShape</p>
-            <p><strong>Provider:</strong> Ada Yazıcı, Krugenofen 15, 52066 Aachen, Germany</p>
+            <p><strong>Provider:</strong> Ada Yazici, Krugenofen 15, 52066 Aachen, Germany</p>
             <p><strong>E-Mail:</strong> <a href="mailto:hi@voiceshape.app" className="text-brand-blue-ink underline">hi@voiceshape.app</a></p>
           </div>
           <p>1.3 The Platform has two kinds of users:</p>

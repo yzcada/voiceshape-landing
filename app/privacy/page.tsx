@@ -18,7 +18,7 @@ export default function PrivacyPage() {
             The data controller within the meaning of the General Data Protection Regulation (GDPR) is:
           </p>
           <p className="mt-2">
-            Ada Yazıcı (VoiceShape)<br />
+            Ada Yazici (VoiceShape)<br />
             Krugenofen 15, 52066 Aachen, Germany<br />
             Email: <a href="mailto:hi@voiceshape.app" className="text-brand-blue-ink underline">hi@voiceshape.app</a>
           </p>

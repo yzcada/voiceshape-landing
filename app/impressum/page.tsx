@@ -21,7 +21,7 @@ export default function ImpressumPage() {
 
       <div className="space-y-8">
         <Block title="Angaben gemäß § 5 DDG">
-          <p>Ada Yazıcı</p>
+          <p>Ada Yazici</p>
           <p>VoiceShape</p>
           <p>Krugenofen 15</p>
           <p>52066 Aachen</p>
@@ -36,7 +36,7 @@ export default function ImpressumPage() {
         </Block>
 
         <Block title="Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV">
-          <p>Ada Yazıcı, Krugenofen 15, 52066 Aachen</p>
+          <p>Ada Yazici, Krugenofen 15, 52066 Aachen</p>
         </Block>
 
         <Block title="Verbraucherstreitbeilegung">
@@ -48,7 +48,7 @@ export default function ImpressumPage() {
 
         <Block title="English">
           <p>
-            VoiceShape is run by Ada Yazıcı, Krugenofen 15, 52066 Aachen, Germany. Contact:{' '}
+            VoiceShape is run by Ada Yazici, Krugenofen 15, 52066 Aachen, Germany. Contact:{' '}
             <a href="mailto:hi@voiceshape.app" className="text-brand-blue-ink underline">hi@voiceshape.app</a>.
             See also our <Link href="/privacy" className="text-brand-blue-ink underline">Privacy Policy</Link> and{' '}
             <Link href="/terms" className="text-brand-blue-ink underline">Terms of Service</Link>.
