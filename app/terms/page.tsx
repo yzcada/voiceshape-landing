@@ -17,7 +17,7 @@ export default function TermsPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-20">
       <h1 className="text-5xl font-black text-gray-900 mb-3">Terms of Service</h1>
-      <p className="text-sm text-gray-600 mb-12">Last updated: October 2026</p>
+      <p className="text-sm text-gray-600 mb-12">Last updated: November 2026</p>
 
       <div className="space-y-8">
 
@@ -59,7 +59,9 @@ export default function TermsPage() {
             2.1 VoiceShape is an educational voice practice platform. Coaches can create exercise blocks
             (optionally with the help of AI), assemble them into lessons and day-by-day practice plans, assign
             them to their clients and see their clients&apos; practice completion, measurements and check-ins.
-            Clients practise with real-time feedback on pitch, resonance and vocal weight.
+            Clients practise with real-time feedback on pitch and vocal weight, plus an experimental (beta)
+            estimate of vocal brightness (&quot;resonance&quot;). These measurements are approximate and are meant as
+            practice aids, not clinical measurements.
           </p>
           <p>2.2 In addition to the core features, the Platform may provide:</p>
           <ul className="list-disc list-inside space-y-1 ml-2">
