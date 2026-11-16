@@ -2,10 +2,17 @@
 
 import { useState, FormEvent } from 'react'
 
-// Pilot sign-up (stored in the Supabase `waitlist` table via /api/waitlist).
+// Pilot sign-up (stored in the Supabase `waitlist` table via /api/waitlist; the team gets an email).
+const ROLES = [
+  { id: 'therapist', label: 'Speech therapist' },
+  { id: 'coach', label: 'Voice / singing coach' },
+  { id: 'student', label: 'Student' },
+  { id: 'other', label: 'Other' },
+] as const
 export default function WaitlistForm({ className = '', buttonLabel = 'Join the free pilot' }: { className?: string; buttonLabel?: string }) {
   const [email, setEmail] = useState('')
   const [gdpr, setGdpr] = useState(false)
+  const [role, setRole] = useState<string | null>(null)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   async function handleSubmit(e: FormEvent) {
@@ -16,7 +23,7 @@ export default function WaitlistForm({ className = '', buttonLabel = 'Join the f
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, gdpr_consent: true }),
+        body: JSON.stringify({ email, gdpr_consent: true, role }),
       })
       setStatus(res.ok ? 'success' : 'error')
     } catch {
@@ -51,6 +58,25 @@ export default function WaitlistForm({ className = '', buttonLabel = 'Join the f
         >
           {status === 'loading' ? 'Sending…' : buttonLabel}
         </button>
+      </div>
+      <div className="flex flex-wrap items-center gap-2" role="radiogroup" aria-label="I am a">
+        <span className="text-xs text-gray-500 mr-1">I am a</span>
+        {ROLES.map((r) => (
+          <button
+            key={r.id}
+            type="button"
+            role="radio"
+            aria-checked={role === r.id}
+            onClick={() => setRole(role === r.id ? null : r.id)}
+            className={`rounded-full px-3 py-1.5 text-xs font-medium border transition-colors cursor-pointer ${
+              role === r.id
+                ? 'border-brand-blue bg-brand-blue/10 text-gray-900'
+                : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
+            }`}
+          >
+            {r.label}
+          </button>
+        ))}
       </div>
       <label className="flex items-start gap-2 text-xs text-gray-500 cursor-pointer">
         <input
